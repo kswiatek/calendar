@@ -1,10 +1,13 @@
 import React from 'react';
 
-import { Container } from './DayMonthSwitch.styled'
+import { Container, Item } from './DayMonthSwitch.styled'
 
-const DayMonthSwitch = () => {
+const DayMonthSwitch = ({ toggleDayMonth }) => {
   return (
-    <Container>DayMonthSwitch</Container>
+    <Container>
+      <Item selected>dzień</Item>
+      <Item>miesiąc</Item>
+    </Container>
   )
 }
 
