@@ -1,14 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
+import { toggleMode } from 'redux/actions'
 import { Container, Item } from './DayMonthSwitch.styled'
 
-const DayMonthSwitch = ({ toggleDayMonth }) => {
+const DayMonthSwitch = ({ mode }) => {
+  const dispatch = useDispatch()
+
+  console.log(mode, dispatch)
+
   return (
-    <Container onClick={toggleDayMonth}>
-      <Item selected>dzień</Item>
-      <Item>miesiąc</Item>
+    <Container onClick={() => dispatch(toggleMode())}>
+      <Item selected={mode === 'day'}>dzień</Item>
+      <Item selected={mode === 'month'}>miesiąc</Item>
     </Container>
   )
 }
 
-export default DayMonthSwitch
+const mapStateToProps = state => ({mode: state.mode})
+
+export default connect(mapStateToProps)(DayMonthSwitch)
