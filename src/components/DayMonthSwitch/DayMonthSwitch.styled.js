@@ -8,7 +8,8 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background: rgba(${COLORS.BLUE1}, 1);
+  background: rgb(${COLORS.BLUE1});
+  cursor: pointer;
 `
 
 export const Item = styled.div`
@@ -16,7 +17,6 @@ export const Item = styled.div`
   padding: 10px;
   box-sizing: border-box;
   border-radius: 4px;
-  border: 3px solid ${props => props.selected ? `rgba(${COLORS.BLUE2}, 1)` : 'transparent'};
-  ${props => !props.selected && `cursor: pointer;`}
+  border: 3px solid ${props => props.selected ? `rgb(${COLORS.BLUE3})` : 'transparent'};
   text-transform: uppercase;
 `
