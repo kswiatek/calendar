@@ -1,10 +1,22 @@
 import React from 'react';
 
-import { Container } from './DayCell.styled'
+import { Container, EventsContainer, EventsCount } from './DayCell.styled'
 
-const DayCell = () => {
+const Events = ({ eventsCount }) => (
+  <EventsContainer>
+    <EventsCount>
+      {eventsCount}
+    </EventsCount>
+    {' '}wydarzeń
+  </EventsContainer>
+)
+
+const DayCell = ({ number, eventsCount = 5 }) => {
   return (
-    <Container>DayCell</Container>
+    <Container isEmpty={!number}>
+      {number}
+      {eventsCount > 0 && <Events eventsCount={eventsCount} />}
+    </Container>
   )
 }
 

@@ -23,6 +23,8 @@ export const DAYS = {
   SUN: 'niedziela',
 }
 
+// TODO: days short and hook for showing them on mobile
+
 export const openWeatherApi = 'http://api.openweathermap.org/data/2.5/weather'
 
 export const openWeatherApiKey = '68149b806bed7191846bf13a51e7d573'

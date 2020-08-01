@@ -9,3 +9,7 @@ export const H2 = styled.h2`
   margin: 3px;
   font-size: 14px;
 `
+
+export const TextSmall = css`
+  font-size: 12px;
+`
