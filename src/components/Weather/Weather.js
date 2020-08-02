@@ -5,7 +5,7 @@ import CloudIcon from '@material-ui/icons/Cloud';
 
 import { COLORS } from 'shared/colors'
 import { Container, DescriptionContainer, Description, IconContainer } from './Weather.styled'
-import { H2 } from 'shared/typography'
+import { H2 } from 'shared/styles'
 import { openWeatherApi, openWeatherApiKey, weatherLocation } from 'shared/consts'
 
 const url = `${openWeatherApi}?q=${weatherLocation}&units=metric&appid=${openWeatherApiKey}`

@@ -1,7 +1,7 @@
 import { actionTypes } from 'redux/actionTypes'
 
 const initialState = {
-  mode: 'month',
+  mode: 'day',
   selectedDay: new Date
 }
 

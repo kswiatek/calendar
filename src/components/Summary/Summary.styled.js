@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { COLORS } from 'shared/colors'
-import { H1 } from 'shared/typography'
+import { H1 } from 'shared/styles'
 
 export const Container = styled.div`
   width: 100%;

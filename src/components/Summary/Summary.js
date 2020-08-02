@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 import { Container, Wrapper, StyledH1 } from './Summary.styled'
-import { H2 } from 'shared/typography'
+import { H2 } from 'shared/styles'
 import { MONTHS } from 'shared/consts'
 
 const getMonthName = monthNumber => Object.values(MONTHS)[monthNumber]

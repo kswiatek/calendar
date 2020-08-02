@@ -5,4 +5,5 @@ export const COLORS = {
   BLUE4: '102, 153, 255',
   DARK1: '13, 13, 13',
   DARK2: '89, 89, 89',
+  RED1: '204, 0, 0',
 } 
