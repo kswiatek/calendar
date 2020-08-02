@@ -26,12 +26,12 @@ export const Container = styled.div`
   text-transform: uppercase;
 `
 
-export const Form = styled.div`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   border-radius: 5px;
   border: 1px solid rgb(${COLORS.DARK2});
-  margin: 15px auto;
+  margin: 15px auto 0 auto;
   padding: 10px;
 `
 
@@ -46,7 +46,9 @@ export const InputContainer = styled.div`
   align-items: center;
 `
 
-export const Input = styled.input`
+export const Input = styled.input.attrs({
+  required: true
+})`
   width: 100%;
   margin-left: 10px;
 `
@@ -62,6 +64,7 @@ export const TimeInput = styled(Input).attrs({
 export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
+  margin: 15px 0 10px 0;
 
   & > button {
     margin-right: 15px;

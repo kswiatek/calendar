@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { COLORS } from 'shared/colors'
+import { TextSmall } from 'shared/styles'
 
 export const Container = styled.div`
   height: 100%;
@@ -24,6 +25,6 @@ export const IconContainer = styled.div`
 `
 
 export const Description = styled.div`
+  ${TextSmall}
   margin: 3px;
-  font-size: 12px;
 `

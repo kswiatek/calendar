@@ -17,16 +17,15 @@ const Events = ({ eventsCount }) => (
 )
 
 const DayCell = ({ date }) => {
-  //TODO: if Date now.day === ten tutaj -> nadaj red border itp...
   const dispatch = useDispatch()
   const isEmpty = !date
   
   if (!isEmpty) {
-    eventsCount = loadEventsForDay(date).length
+    const loadedEvents = loadEventsForDay(date)
+    eventsCount = !loadedEvents ? 0 : loadedEvents.length
   }
 
   const dayCellClickHandler = () => {
-    //teraz tutaj co to za dzien wybrany?
     dispatch(selectDay(date))
     dispatch(toggleMode())
   }

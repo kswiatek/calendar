@@ -2,33 +2,65 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import EditCreateModal from 'components/EditCreateModal/EditCreateModal'
-import { /*saveEvent,*/ loadEventsForDay } from 'shared/eventsManager'
+import { loadEventsForDay } from 'shared/eventsManager'
 import { H1, Button } from 'shared/styles'
-import { Container, Header } from './Day.styled'
+import { Container, Header, Li, SmallButton } from './Day.styled'
+
+let eventDataToEdit = {}
 
 const Day = ({ selectedDay }) => {
   const [events, setEvents] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
-    setEvents(loadEventsForDay(selectedDay))
-  }, [selectedDay])
+    if (isModalOpen) {
+      return
+    }
+    const loadedEvents = loadEventsForDay(selectedDay)
+    if (!loadedEvents) {
+      return
+    }
+    setEvents(loadedEvents.sort((a, b) => a.from - b.from))
+  }, [selectedDay, isModalOpen])
 
+  const openModalInCreateMode = () => {
+    eventDataToEdit = {}
+    setIsModalOpen(true)
+  }
 
-  // const saveEventHandler = (from, to, description) => {
-  //   saveEvent(from, to, description)
-  // }
+  const openModalInEditMode = (event) => {
+    eventDataToEdit = { ...event }
+    setIsModalOpen(true)
+  }
+
+  const getEvents = () => {
+    if (!events) {
+      return null
+    }
+    return (
+      <ul>
+        {events.map(event => {
+          const from = `${(new Date(event.from)).getHours()}:${(new Date(event.from)).getMinutes()}`
+          const to = `${(new Date(event.to)).getHours()}:${(new Date(event.to)).getMinutes()}`
+          return (<Li>{from} - {to} - {event.description}
+            <SmallButton onClick={() => openModalInEditMode(event)}>edytuj</SmallButton>
+          </Li>)
+        })}
+      </ul>
+    )
+  }
 
   return (
     <Container>
       <Header>
         <H1>Wydarzenia:</H1>
-        <Button onClick={() => setIsModalOpen(true)}>dodaj +</Button>
-        {/* TODO: open modal on clikc for adding new events */}
+        <Button onClick={openModalInCreateMode}>dodaj +</Button>
       </Header>
-      {events && events.map(event => <p>{event.description}</p>)}
-      {isModalOpen && <EditCreateModal selectedDay={selectedDay} 
-        /*saveEvent={saveEventHandler}*/ closeModal={() => setIsModalOpen(false)} />}
+      {getEvents()}
+      {isModalOpen && <EditCreateModal 
+        selectedDay={selectedDay} 
+        closeModal={() => setIsModalOpen(false)} 
+        eventDataToEdit={eventDataToEdit} />}
     </Container>
   )
 }
