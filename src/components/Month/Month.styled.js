@@ -4,7 +4,6 @@ import DayCell from 'components/DayCell/DayCell'
 import { COLORS } from 'shared/colors'
 
 export const Container = styled.div`
-  background: rgba(${COLORS.BLUE4}, 0.4);
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(7, 60px);

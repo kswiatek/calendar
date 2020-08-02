@@ -1,19 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 import { Container, Wrapper, StyledH1 } from './Summary.styled'
 import { H2 } from 'shared/typography'
 import { MONTHS } from 'shared/consts'
 
-const date = new Date
-const day = date.getDay()
-const month = date.getMonth()
-const year = date.getYear()
+const getMonthName = monthNumber => Object.values(MONTHS)[monthNumber]
 
-const getMonthName = monthNumber => {
-  return MONTHS[monthNumber]
-}
+const Summary = ({ selectedDay }) => {
+  const day = selectedDay.getDate()
+  const month = selectedDay.getMonth()
+  const year = selectedDay.getFullYear()
 
-const Summary = () => {
   return (
     <Container>
       {day && <StyledH1>{day}</StyledH1>}
@@ -25,4 +23,6 @@ const Summary = () => {
   )
 }
 
-export default Summary
+const mapStateToProps = state => ({ selectedDay: state.selectedDay })
+
+export default connect(mapStateToProps)(Summary)

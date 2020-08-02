@@ -11,7 +11,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  ${props => !props.isEmpty && `background: rgba(${COLORS.BLUE3}, 0.2);`}
+  ${props => !props.isEmpty && `
+    background: rgba(${COLORS.BLUE3}, 0.2);
+    cursor: pointer;
+  `}
 
   &:hover {
     ${props => !props.isEmpty && `background: rgba(${COLORS.BLUE3}, 0.4);`}

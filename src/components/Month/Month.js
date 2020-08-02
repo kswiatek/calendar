@@ -4,7 +4,9 @@ import { DAYS } from 'shared/consts'
 import DayCell from 'components/DayCell/DayCell'
 import { Container, HeaderCell } from './Month.styled'
 
-const getEmptyDayCells = count => {
+const getEmptyDayCells = firstDayNumber => {
+  // console.log('firstDayNumber', firstDayNumber)
+  const count = firstDayNumber > 0 ? firstDayNumber - 1 : 6
   const emptyDays = []
   for(let i = 0; i < count; i++) {
     emptyDays.push(<DayCell key={i} />)
@@ -13,30 +15,31 @@ const getEmptyDayCells = count => {
 }
 
 const getDayCells = (year, month) => {
-  const numberOfDays = new Date(year, month, 0).getDate()
-  const emptyDays = []
-  for(let i = 0; i < numberOfDays; i++) {
-    emptyDays.push(<DayCell key={i} number={i + 1} />)
+  // console.log('dd', new Date(year, month, 0))
+  // let gg = new Date(year, month, 0)
+  // debugger
+  const numberOfDays = new Date(year, month , 0).getDate()
+  const days = []
+  for(let i = 1; i < numberOfDays; i++) {
+    // emptyDays.push(<DayCell key={i} number={i + 1} />)
+    // emptyDays.push(<DayCell key={i} number={i} />)
+    days.push(<DayCell key={i} date={new Date(year, month, i)} />)
   }
-  return emptyDays
+  return days
 }
 
 const date = new Date
 const month = date.getMonth()
-const year = date.getYear()
-const firstDayNumber = date.getDay()
+const year = date.getFullYear()
+const firstDayNumber = date.getDay() //by default sunday is 0
+
+const headerCells = Object.values(DAYS).map(day => <HeaderCell key={day}>{day}</HeaderCell>)
 
 const Month = () => {
   return (
     <Container>
-      <HeaderCell>{DAYS.MON}</HeaderCell>
-      <HeaderCell>{DAYS.TUE}</HeaderCell>
-      <HeaderCell>{DAYS.WEN}</HeaderCell>
-      <HeaderCell>{DAYS.THU}</HeaderCell>
-      <HeaderCell>{DAYS.FRI}</HeaderCell>
-      <HeaderCell>{DAYS.SAT}</HeaderCell>
-      <HeaderCell>{DAYS.SUN}</HeaderCell>
-      {getEmptyDayCells(firstDayNumber - 1)}
+      {headerCells}
+      {getEmptyDayCells(firstDayNumber)}
       {getDayCells(year, month)}
     </Container>
   )
