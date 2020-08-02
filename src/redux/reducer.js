@@ -8,7 +8,8 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.TOGGLE_MODE:
-      return { ...state, mode: state.mode === 'day' ? 'month' : 'day' }
+      const mode = state.mode === 'day' ? 'month' : 'day'
+      return { ...state, mode }
     case actionTypes.SELECT_DAY:
       return { ...state, selectedDay: action.date }
     case actionTypes.CLEAR_DAY:

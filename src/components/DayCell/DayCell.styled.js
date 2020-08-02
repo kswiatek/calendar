@@ -15,6 +15,7 @@ export const Container = styled.div`
     background: rgba(${COLORS.BLUE3}, 0.2);
     cursor: pointer;
   `}
+  ${props => props.isToday && `border: 2px solid red;`}
 
   &:hover {
     ${props => !props.isEmpty && `background: rgba(${COLORS.BLUE3}, 0.4);`}
