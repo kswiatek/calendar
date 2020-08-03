@@ -10,6 +10,10 @@ export const Container = styled.div`
   height: 100%;
   background: rgb(${COLORS.BLUE1});
   cursor: pointer;
+  
+  &:hover {
+    background: rgba(${COLORS.BLUE2}, 0.5);
+  }
 `
 
 export const Item = styled.div`

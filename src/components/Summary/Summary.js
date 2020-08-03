@@ -1,13 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 
-import { Container, Wrapper, StyledH1 } from './Summary.styled'
+import { clearSelection } from 'redux/actions'
+import { Container, Wrapper, StyledH1, StyledRestoreIcon } from './Summary.styled'
 import { H2 } from 'shared/styles'
 import { MONTHS } from 'shared/consts'
 
 const getMonthName = monthNumber => Object.values(MONTHS)[monthNumber]
 
 const Summary = ({ mode, selectedDay, selectedMonth }) => {
+  const dispatch = useDispatch()
+
   const day = mode === 'day' ? selectedDay.getDate() : null
   const month = mode === 'day' ? selectedDay.getMonth() : selectedMonth.getMonth()
   const year = mode === 'day' ? selectedDay.getFullYear() : selectedMonth.getFullYear()
@@ -19,6 +22,7 @@ const Summary = ({ mode, selectedDay, selectedMonth }) => {
         <H2>{getMonthName(month)}</H2>
         <H2>{year}</H2>
       </Wrapper>
+      <StyledRestoreIcon onClick={() => dispatch(clearSelection())} />
     </Container>
   )
 }
@@ -27,6 +31,6 @@ const mapStateToProps = state => ({
   selectedDay: state.selectedDay,
   selectedMonth: state.selectedMonth,
   mode: state.mode,
- })
+})
 
 export default connect(mapStateToProps)(Summary)

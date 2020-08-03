@@ -15,8 +15,11 @@ const reducer = (state = initialState, action) => {
       return { ...state, mode }
     case actionTypes.SELECT_DAY:
       return { ...state, selectedDay: action.date }
-    case actionTypes.CLEAR_DAY:
-      return { ...state, selectedDay: new Date }
+    case actionTypes.CLEAR_SELECTION:
+      return { 
+        ...state, 
+        selectedDay: new Date,
+        selectedMonth: new Date }
     case actionTypes.SELECT_MONTH:
       return { ...state, selectedMonth: action.date }
     default:
