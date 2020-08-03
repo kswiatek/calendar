@@ -33,3 +33,9 @@ export const EventsCount = styled.div`
   border-radius: 10px;
   border: 1px solid rgb(${COLORS.BLUE3});
 `
+
+export const EventDescription = styled.span`
+  @media(max-width: 700px) {
+    display: none;
+  }
+`

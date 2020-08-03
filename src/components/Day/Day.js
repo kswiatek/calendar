@@ -8,7 +8,7 @@ import { Container, Header, Li, SmallButton } from './Day.styled'
 
 let eventDataToEdit = {}
 
-const Day = ({ selectedDay }) => {
+const Day = React.memo(({ selectedDay }) => {
   const [events, setEvents] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -47,7 +47,7 @@ const Day = ({ selectedDay }) => {
           const toHours = (new Date(event.to)).getHours()
           const from = `${fromHours < 10 ? '0' : ''}${fromHours}:${fromMinutes < 10 ? '0' : ''}${fromMinutes}`
           const to = `${toHours < 10 ? '0' : ''}${toHours}:${toMinutes < 10 ? '0' : ''}${toMinutes}`
-          
+
           return (<Li key={i}>{from} - {to} - {event.description}
             <SmallButton onClick={() => openModalInEditMode(event)}>edytuj</SmallButton>
           </Li>)
@@ -69,7 +69,7 @@ const Day = ({ selectedDay }) => {
         eventDataToEdit={eventDataToEdit} />}
     </Container>
   )
-}
+})
 
 const mapStateToProps = state => ({ selectedDay: state.selectedDay })
 

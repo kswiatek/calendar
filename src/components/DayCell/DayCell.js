@@ -4,22 +4,26 @@ import { useDispatch } from 'react-redux'
 import { useMobile } from 'hooks/useMobile'
 import { loadEventsForDay } from 'shared/eventsManager'
 import { toggleMode, selectDay } from 'redux/actions'
-import { Container, EventsContainer, EventsCount } from './DayCell.styled'
+import { 
+  Container, 
+  EventsContainer, 
+  EventsCount, 
+  EventDescription 
+} from './DayCell.styled'
 
 let eventsCount = 0
 
-const Events = ({ eventsCount, isMobile }) => (
+const Events = ({ eventsCount }) => (
   <EventsContainer>
     <EventsCount>
       {eventsCount}
     </EventsCount>
-    {!isMobile && ' wydarzeń'}
+    <EventDescription>{' '}wydarzeń</EventDescription>
   </EventsContainer>
 )
 
 const DayCell = ({ date }) => {
   const dispatch = useDispatch()
-  const { isMobile } = useMobile()
   const isEmpty = !date
   
   if (!isEmpty) {
@@ -38,7 +42,7 @@ const DayCell = ({ date }) => {
   return (
     <Container isEmpty={isEmpty} isToday={isToday} onClick={!isEmpty ? dayCellClickHandler : () => {} }>
       {number}
-      {eventsCount > 0 && <Events eventsCount={eventsCount} isMobile={isMobile} />}
+      {eventsCount > 0 && <Events eventsCount={eventsCount} />}
     </Container>
   )
 }
