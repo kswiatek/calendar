@@ -3,7 +3,12 @@ import React from 'react';
 import DayMonthSwitch from 'components/DayMonthSwitch/DayMonthSwitch'
 import Summary from 'components/Summary/Summary'
 import Weather from 'components/Weather/Weather'
-import { Container, DayMonthSwitchContainer, SummaryContainer, MainWrapper } from './Header.styled'
+import { 
+  Container, 
+  DayMonthSwitchContainer, 
+  SummaryContainer, 
+  MainWrapper 
+} from './Header.styled'
 
 const Header = () => {
   return (

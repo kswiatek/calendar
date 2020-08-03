@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import DayCell from 'components/DayCell/DayCell'
 import { COLORS } from 'shared/colors'
 
 export const Container = styled.div`
@@ -18,8 +17,4 @@ export const HeaderCell = styled.div`
   align-items: center;
   box-sizing: border-box;
   border: 1px solid rgb(${COLORS.DARK2});
-`
-
-export const StyledDayCell = styled(DayCell)`
-
 `

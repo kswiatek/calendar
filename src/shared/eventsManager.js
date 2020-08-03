@@ -12,7 +12,6 @@ export const saveEvent = (from, to, description) => {
     description 
   }
   const loadedStorage = getStorage()
-
   if (loadedStorage) {
     const parsedLoadedStorage = JSON.parse(loadedStorage)
     parsedLoadedStorage.push(newEvent)
@@ -34,7 +33,6 @@ export const editEvent = (id, from, to, description) => {
     to, 
     description 
   }
-
   newStorage.push(newEvent)
   localStorage.setItem(localStorageKey, JSON.stringify(newStorage))
 }
@@ -47,5 +45,6 @@ export const loadEventsForDay = (date) => {
   const parsedStorage = JSON.parse(loadedStorage)
   const loadedEvents = parsedStorage.filter(event => 
     (new Date(event.from)).toDateString() === date.toDateString())
+    
   return loadedEvents
 }

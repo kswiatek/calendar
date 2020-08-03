@@ -4,22 +4,32 @@ import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import CloudIcon from '@material-ui/icons/Cloud';
 
 import { COLORS } from 'shared/colors'
-import { Container, DescriptionContainer, Description, IconContainer } from './Weather.styled'
 import { H2 } from 'shared/styles'
-import { openWeatherApi, openWeatherApiKey, weatherLocation } from 'shared/consts'
+import { 
+  openWeatherApi, 
+  openWeatherApiKey, 
+  weatherLocation 
+} from 'shared/consts'
+import { 
+  Container, 
+  Description, 
+  IconContainer 
+} from './Weather.styled'
 
 const url = `${openWeatherApi}?q=${weatherLocation}&units=metric&appid=${openWeatherApiKey}`
 
 const iconColor = `rgb(${COLORS.BLUE3})`
 const getCloudsIcon = cloudsPercentage => 
-  cloudsPercentage <= 20 ? <WbSunnyIcon htmlColor={iconColor}/> : <CloudIcon htmlColor={iconColor} />
+  cloudsPercentage <= 20 ? <WbSunnyIcon htmlColor={iconColor}/> : 
+  <CloudIcon htmlColor={iconColor} />
 
 const Weather = () => {
   const [weatherData, setWeatherData] = useState(null)
   const [weatherDataError, setWeatherDataError] = useState(null)
 
   useEffect(() => {
-    axios.get(url).then(result => setWeatherData(result.data)).catch(err => setWeatherDataError(err.message))
+    axios.get(url).then(result => setWeatherData(result.data))
+      .catch(err => setWeatherDataError(err.message))
   }, [])
 
   if (!weatherDataError && !weatherData) {
@@ -36,11 +46,11 @@ const Weather = () => {
 
   return (
     <Container>
-      <DescriptionContainer>
+      <div>
         <H2>{cityName}</H2>
         <Description>Temperatura: {temp} <sup>o</sup>C</Description>
         <Description>Ciśnienie: {pressure} hPa</Description>
-      </DescriptionContainer>
+      </div>
       <IconContainer>
         {getCloudsIcon(cloudsPercentage)}
       </IconContainer>

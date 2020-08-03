@@ -28,7 +28,9 @@ const getDayCells = date => {
   return days
 }
 
-const getHeaderCells = days => Object.values(days).map(day => <HeaderCell key={day}>{day}</HeaderCell>)
+const getHeaderCells = days => Object.values(days).map(
+  day => <HeaderCell key={day}>{day}</HeaderCell>
+)
 
 const Month = ({ selectedMonth }) => {
   const { isMobile } = useMobile()

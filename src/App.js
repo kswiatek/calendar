@@ -5,17 +5,16 @@ import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
 import Month from 'components/Month/Month'
 import Day from 'components/Day/Day'
-import { Container } from './App.styled'
 
-const App = ({mode}) => {
+const App = ({ mode }) => {
   return (
-  <>
-    <Container>
-      <Header />
-      {mode === 'day' && <Day />}
-      {mode === 'month' && <Month />}
-    </Container>
-    <Footer />
+    <>
+      <div>
+        <Header />
+        {mode === 'day' && <Day />}
+        {mode === 'month' && <Month />}
+      </div>
+      <Footer />
     </>
   )
 }

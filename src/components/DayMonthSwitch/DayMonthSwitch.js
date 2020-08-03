@@ -8,12 +8,8 @@ import { Container, Item } from './DayMonthSwitch.styled'
 const DayMonthSwitch = ({ mode }) => {
   const dispatch = useDispatch()
 
-  const toggleHandler = () => {
-    dispatch(toggleMode())
-  }
-
   return (
-    <Container onClick={toggleHandler}>
+    <Container onClick={() => dispatch(toggleMode())}>
       <Item selected={mode === 'day'}>dzień</Item>
       <Item selected={mode === 'month'}>miesiąc</Item>
     </Container>

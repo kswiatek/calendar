@@ -2,9 +2,14 @@ import React from 'react';
 import { connect, useDispatch } from 'react-redux'
 
 import { clearSelection } from 'redux/actions'
-import { Container, Wrapper, StyledH1, StyledRestoreIcon } from './Summary.styled'
 import { H2 } from 'shared/styles'
 import { MONTHS } from 'shared/consts'
+import { 
+  Container, 
+  Wrapper, 
+  StyledH1, 
+  StyledRestoreIcon 
+} from './Summary.styled'
 
 const getMonthName = monthNumber => Object.values(MONTHS)[monthNumber]
 

@@ -12,10 +12,6 @@ export const Container = styled.div`
   background: rgb(${COLORS.BLUE1});
 `
 
-export const DescriptionContainer = styled.div`
-  
-`
-
 export const IconContainer = styled.div`
   margin: 5px 20px;
 
