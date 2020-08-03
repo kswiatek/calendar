@@ -23,7 +23,15 @@ export const DAYS = {
   SUN: 'niedziela',
 }
 
-// TODO: days short and hook for showing them on mobile
+export const SHROT_DAYS = {
+  MON: 'pon',
+  TUE: 'wt',
+  WEN: 'śr',
+  THU: 'czw',
+  FRI: 'pt',
+  SAT: 'sb',
+  SUN: 'nd',
+}
 
 export const openWeatherApi = 'http://api.openweathermap.org/data/2.5/weather'
 

@@ -20,6 +20,7 @@ const Day = ({ selectedDay }) => {
     if (!loadedEvents) {
       return
     }
+
     setEvents(loadedEvents.sort((a, b) => a.from - b.from))
   }, [selectedDay, isModalOpen])
 
@@ -40,8 +41,12 @@ const Day = ({ selectedDay }) => {
     return (
       <ul>
         {events.map((event, i) => {
-          const from = `${(new Date(event.from)).getHours()}:${(new Date(event.from)).getMinutes()}`
-          const to = `${(new Date(event.to)).getHours()}:${(new Date(event.to)).getMinutes()}`
+          const fromMinutes = (new Date(event.from)).getMinutes()
+          const toMinutes = (new Date(event.to)).getMinutes()
+          const fromHours = (new Date(event.from)).getHours()
+          const toHours = (new Date(event.to)).getHours()
+          const from = `${fromHours < 10 ? '0' : ''}${fromHours}:${fromMinutes < 10 ? '0' : ''}${fromMinutes}`
+          const to = `${toHours < 10 ? '0' : ''}${toHours}:${toMinutes < 10 ? '0' : ''}${toMinutes}`
           return (<Li key={i}>{from} - {to} - {event.description}
             <SmallButton onClick={() => openModalInEditMode(event)}>edytuj</SmallButton>
           </Li>)

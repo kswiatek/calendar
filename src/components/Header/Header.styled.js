@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  height: 70px;
+  // min-height: 70px;
   display: flex;
+
+  @media(max-width: 700px) {
+    flex-direction: column;
+  }
 `
 
 export const DayMonthSwitchContainer = styled.div`
@@ -11,6 +15,10 @@ export const DayMonthSwitchContainer = styled.div`
   align-items: stretch;
   height: 100%;
   width: 160px;
+
+  @media(max-width: 700px) {
+    width: 100%;
+  }
 `
 
 export const SummaryContainer = styled.div`
@@ -19,4 +27,9 @@ export const SummaryContainer = styled.div`
   align-items: stretch;
   height: 100%;
   width: 160px;
+`
+
+export const MainWrapper = styled.div`
+  display: flex;
+  height: 70px;
 `

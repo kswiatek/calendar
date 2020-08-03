@@ -15,11 +15,16 @@ import {
 
 const getInitialValueFromDate = (date) => {
   const formattedDate = new Date(date)
-  return `${formattedDate.getHours()}:${formattedDate.getMinutes()}`
+
+  const hours = formattedDate.getHours()
+  const minutes = formattedDate.getMinutes()
+  const formattedHours = `${hours < 10 ? '0' : ''}${hours}`
+  const formattedMinutes = `${minutes < 10 ? '0' : ''}${minutes}`
+  
+  return `${formattedHours}:${formattedMinutes}`
 }
 
 const EditCreateModal = ({ selectedDay, closeModal, eventDataToEdit }) => {
-  console.log('modal render, eventDataToEdit:', eventDataToEdit)
   const inputFrom = useRef(null)
   const inputTo = useRef(null)
   const inputDescription = useRef(null)

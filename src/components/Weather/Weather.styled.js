@@ -4,7 +4,8 @@ import { COLORS } from 'shared/colors'
 import { TextSmall } from 'shared/styles'
 
 export const Container = styled.div`
-  height: 100%;
+  height: 70px;
+  max-height: 70px;
   display: flex;
   flex: 1;
   justify-content: space-between;

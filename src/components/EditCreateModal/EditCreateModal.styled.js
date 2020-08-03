@@ -20,6 +20,7 @@ export const Container = styled.div`
   width: 70%;
   min-width: 320px;
   max-width: 600px;
+  box-sizing: border-box;
   background: rgb(${COLORS.BLUE4});
   margin: 0 auto;
   border-radius: 5px;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import { DAYS } from 'shared/consts'
+import { useMobile } from 'hooks/useMobile'
+import { DAYS, SHROT_DAYS } from 'shared/consts'
 import DayCell from 'components/DayCell/DayCell'
 import { Container, HeaderCell } from './Month.styled'
 
@@ -21,17 +22,18 @@ const getDayCells = date => {
   const year = date.getFullYear()
   const numberOfDays = new Date(year, month + 1 , 0).getDate() //0 indicated last day of month
   const days = []
-  const days2 = []
   for(let i = 1; i <= numberOfDays; i++) {
-    days2.push(new Date(year, month, i))
     days.push(<DayCell key={i} date={new Date(year, month, i)} />)
   }
   return days
 }
 
-const headerCells = Object.values(DAYS).map(day => <HeaderCell key={day}>{day}</HeaderCell>)
+const getHeaderCells = days => Object.values(days).map(day => <HeaderCell key={day}>{day}</HeaderCell>)
 
 const Month = ({ selectedMonth }) => {
+  const { isMobile } = useMobile()
+  const headerCells = isMobile ? getHeaderCells(SHROT_DAYS) : getHeaderCells(DAYS)
+
   return (
     <Container>
       {headerCells}

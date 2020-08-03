@@ -34,7 +34,7 @@ export const editEvent = (id, from, to, description) => {
     to, 
     description 
   }
-  console.log('newEvent',newEvent)
+
   newStorage.push(newEvent)
   localStorage.setItem(localStorageKey, JSON.stringify(newStorage))
 }

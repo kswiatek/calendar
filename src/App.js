@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 import Header from 'components/Header/Header'
@@ -8,20 +8,18 @@ import Day from 'components/Day/Day'
 import { Container } from './App.styled'
 
 const App = ({mode}) => {
-  // const [mode, setMode] = useState('month')
-
-// console.log('app props', props)
-  return (<>
+  return (
+  <>
     <Container>
       <Header />
       {mode === 'day' && <Day />}
       {mode === 'month' && <Month />}
-      
     </Container>
-    <Footer /></>
+    <Footer />
+    </>
   )
 }
 
-const mapStateToProps = state => ({mode: state.mode})
+const mapStateToProps = state => ({ mode: state.mode })
 
 export default connect(mapStateToProps)(App)
