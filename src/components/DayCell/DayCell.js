@@ -31,7 +31,7 @@ const DayCell = ({ date }) => {
   }
 
   const number = isEmpty ? null : date.getDate()
-  const isToday = date && date.getDate() === (new Date).getDate()
+  const isToday = date && date.toDateString() === (new Date).toDateString()
 
   return (
     <Container isEmpty={isEmpty} isToday={isToday} onClick={!isEmpty ? dayCellClickHandler : () => {} }>

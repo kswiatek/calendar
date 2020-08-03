@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 import { DAYS } from 'shared/consts'
 import DayCell from 'components/DayCell/DayCell'
@@ -29,16 +30,17 @@ const getDayCells = date => {
 }
 
 const headerCells = Object.values(DAYS).map(day => <HeaderCell key={day}>{day}</HeaderCell>)
-const date = new Date
 
-const Month = () => {
+const Month = ({ selectedMonth }) => {
   return (
     <Container>
       {headerCells}
-      {getEmptyDayCells(date)}
-      {getDayCells(date)}
+      {getEmptyDayCells(selectedMonth)}
+      {getDayCells(selectedMonth)}
     </Container>
   )
 }
 
-export default Month
+const mapStateToProps = state => ({ selectedMonth: state.selectedMonth })
+
+export default connect(mapStateToProps)(Month)

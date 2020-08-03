@@ -17,8 +17,10 @@ export const Wrapper = styled.div`
 `
 
 export const StyledH1 = styled(H1)`
+  width: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 10px;
+  box-sizing: border-box;
 `

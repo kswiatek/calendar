@@ -25,4 +25,3 @@ const App = ({mode}) => {
 const mapStateToProps = state => ({mode: state.mode})
 
 export default connect(mapStateToProps)(App)
-// export default App

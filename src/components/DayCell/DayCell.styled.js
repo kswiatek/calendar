@@ -10,7 +10,7 @@ export const Container = styled.div`
   padding: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   ${props => !props.isEmpty && `
     background: rgba(${COLORS.BLUE3}, 0.2);
     cursor: pointer;

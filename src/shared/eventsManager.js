@@ -45,11 +45,7 @@ export const loadEventsForDay = (date) => {
     return null
   }
   const parsedStorage = JSON.parse(loadedStorage)
-  const loadedEvents = parsedStorage.filter(event => {
-    const eventDay = (new Date(event.from)).getDate()
-    if (date.getDate() === eventDay) {
-      return true
-    }
-  })
+  const loadedEvents = parsedStorage.filter(event => 
+    (new Date(event.from)).toDateString() === date.toDateString())
   return loadedEvents
 }

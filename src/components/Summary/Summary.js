@@ -7,14 +7,14 @@ import { MONTHS } from 'shared/consts'
 
 const getMonthName = monthNumber => Object.values(MONTHS)[monthNumber]
 
-const Summary = ({ selectedDay }) => {
-  const day = selectedDay.getDate()
-  const month = selectedDay.getMonth()
-  const year = selectedDay.getFullYear()
+const Summary = ({ mode, selectedDay, selectedMonth }) => {
+  const day = mode === 'day' ? selectedDay.getDate() : null
+  const month = mode === 'day' ? selectedDay.getMonth() : selectedMonth.getMonth()
+  const year = mode === 'day' ? selectedDay.getFullYear() : selectedMonth.getFullYear()
 
   return (
     <Container>
-      {day && <StyledH1>{day}</StyledH1>}
+      <StyledH1>{day}</StyledH1>
       <Wrapper>
         <H2>{getMonthName(month)}</H2>
         <H2>{year}</H2>
@@ -23,6 +23,10 @@ const Summary = ({ selectedDay }) => {
   )
 }
 
-const mapStateToProps = state => ({ selectedDay: state.selectedDay })
+const mapStateToProps = state => ({ 
+  selectedDay: state.selectedDay,
+  selectedMonth: state.selectedMonth,
+  mode: state.mode,
+ })
 
 export default connect(mapStateToProps)(Summary)
