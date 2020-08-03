@@ -1,10 +1,14 @@
 import React from 'react';
 
 import { Container } from './Footer.styled'
+import { Button } from 'shared/styles'
 
 const Footer = () => {
   return (
-    <Container>Footer</Container>
+    <Container>
+      <Button>{'<'}</Button>
+      <Button>{'>'}</Button>
+    </Container>
   )
 }
 

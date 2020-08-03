@@ -39,10 +39,10 @@ const Day = ({ selectedDay }) => {
     }
     return (
       <ul>
-        {events.map(event => {
+        {events.map((event, i) => {
           const from = `${(new Date(event.from)).getHours()}:${(new Date(event.from)).getMinutes()}`
           const to = `${(new Date(event.to)).getHours()}:${(new Date(event.to)).getMinutes()}`
-          return (<Li>{from} - {to} - {event.description}
+          return (<Li key={i}>{from} - {to} - {event.description}
             <SmallButton onClick={() => openModalInEditMode(event)}>edytuj</SmallButton>
           </Li>)
         })}

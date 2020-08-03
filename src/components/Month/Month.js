@@ -4,43 +4,39 @@ import { DAYS } from 'shared/consts'
 import DayCell from 'components/DayCell/DayCell'
 import { Container, HeaderCell } from './Month.styled'
 
-const getEmptyDayCells = firstDayNumber => {
-  // console.log('firstDayNumber', firstDayNumber)
-  const count = firstDayNumber > 0 ? firstDayNumber - 1 : 6
+const getEmptyDayCells = date => {
+  const month = date.getMonth()
+  const year = date.getFullYear()
+  const firstDayNumber = (new Date(year, month, 1)).getDay()
   const emptyDays = []
-  for(let i = 0; i < count; i++) {
+  for(let i = 1; i < firstDayNumber; i++) {
     emptyDays.push(<DayCell key={i} />)
   }
   return emptyDays
 }
 
-const getDayCells = (year, month) => {
-  // console.log('dd', new Date(year, month, 0))
-  // let gg = new Date(year, month, 0)
-  // debugger
-  const numberOfDays = new Date(year, month , 0).getDate()
+const getDayCells = date => {
+  const month = date.getMonth()
+  const year = date.getFullYear()
+  const numberOfDays = new Date(year, month + 1 , 0).getDate() //0 indicated last day of month
   const days = []
-  for(let i = 1; i < numberOfDays; i++) {
-    // emptyDays.push(<DayCell key={i} number={i + 1} />)
-    // emptyDays.push(<DayCell key={i} number={i} />)
+  const days2 = []
+  for(let i = 1; i <= numberOfDays; i++) {
+    days2.push(new Date(year, month, i))
     days.push(<DayCell key={i} date={new Date(year, month, i)} />)
   }
   return days
 }
 
-const date = new Date
-const month = date.getMonth()
-const year = date.getFullYear()
-const firstDayNumber = date.getDay() //by default sunday is 0
-
 const headerCells = Object.values(DAYS).map(day => <HeaderCell key={day}>{day}</HeaderCell>)
+const date = new Date
 
 const Month = () => {
   return (
     <Container>
       {headerCells}
-      {getEmptyDayCells(firstDayNumber)}
-      {getDayCells(year, month)}
+      {getEmptyDayCells(date)}
+      {getDayCells(date)}
     </Container>
   )
 }
